@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"composite": true,
+		"jsx": "react-jsx",
+		"jsxImportSource": "voby",
+		"module": "Preserve",
+		"moduleResolution": "Bundler",
+		"esModuleInterop": true,
+		"strict": true,
+		"lib": ["ESNext", "DOM"],
+		"types": ["../../env.d.ts"]
+	},
+	"include": ["src"]
+}

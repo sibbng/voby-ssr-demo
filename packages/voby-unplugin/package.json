@@ -1,0 +1,29 @@
+{
+	"name": "voby-unplugin",
+	"type": "module",
+	"version": "0.0.1",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs"
+		},
+		"./*": "./*"
+	},
+	"main": "dist/index.cjs",
+	"module": "dist/index.js",
+	"types": "dist/index.d.ts",
+	"typesVersions": {
+		"*": {
+			"*": ["./dist/*", "./*"]
+		}
+	},
+	"files": ["dist"],
+	"scripts": {
+		"build": "rslib build",
+		"dev": "rslib build --watch"
+	},
+	"devDependencies": {
+		"@types/node": "^22.5.1"
+	}
+}
