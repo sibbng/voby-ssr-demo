@@ -41,8 +41,7 @@ export default defineConfig({
 			config.output ??= {};
 			config.output.module = true;
 			config.output.chunkFormat = "module";
-			config.output.library = { type: "modern-module" };
-			config.devServer = false;
+			config.output.library = { type: process.env.NODE_ENV === "production" ? "modern-module" : "module" };
 			ctx.prependPlugins(voby.ssr.rspack());
 		},
 	},
