@@ -39,8 +39,9 @@ export default defineConfig({
 			config.experiments ??= {};
 			config.experiments.outputModule = true;
 			config.output ??= {};
+			config.output.module = true;
 			config.output.chunkFormat = "module";
-			config.output.library = { type: "module" };
+			config.output.library = { type: "modern-module" };
 			config.devServer = false;
 			ctx.prependPlugins(voby.ssr.rspack());
 		},
