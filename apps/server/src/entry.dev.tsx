@@ -1,6 +1,6 @@
 /* IMPORT */
 
-import Server from "noren/node";
+import Server from "noren/edge";
 import { renderToString } from "voby";
 import { useRouter } from "voby-simple-router";
 import { routes } from "../../client/src/routes";
@@ -42,6 +42,7 @@ app.get("*", async (req, res) => {
 	}
 });
 
-app.listen(Number(process.env.PORT), () => {
-	console.log(`Listening on: http://localhost:${process.env.PORT}`);
-});
+export default {
+	port: process.env.PORT,
+	fetch: app.fetch.bind(app),
+}

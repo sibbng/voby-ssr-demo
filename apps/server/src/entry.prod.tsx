@@ -4,7 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import process from "node:process";
 import { favicon, serveStatic } from "noren/middlewares";
-import Server from "noren/node";
+import Server from "noren/edge";
 import { renderToString } from "voby";
 import App from "../../client/src/app";
 
@@ -40,6 +40,7 @@ app.get("*", async (req, res) => {
 	}
 });
 
-app.listen(Number(process.env.PORT), () => {
-	console.log(`Listening on: http://localhost:${process.env.PORT}`);
-});
+export default {
+	port: process.env.PORT,
+	fetch: app.fetch.bind(app),
+}

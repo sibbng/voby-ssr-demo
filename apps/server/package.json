@@ -5,7 +5,7 @@
 	"scripts": {
 		"dev": "rsbuild dev --env-dir \"../..\"",
 		"build": "rsbuild build --env-dir \"../..\"",
-		"watch": "wait-on http://localhost:8080 dist/entry.dev.js && dotenvx run -f \"../../.env.development\" -- node --watch dist/entry.dev.js",
-		"start": "dotenvx run -f \"../../.env.production\" -- node dist/entry.prod.js"
+		"watch": "wait-on http://localhost:8080 dist/entry.dev.js && dotenvx run -f \"../../.env.development\" -- bun --watch dist/entry.dev.js",
+		"start": "dotenvx run -f \"../../.env.production\" -- bun dist/entry.prod.js"
 	}
 }
