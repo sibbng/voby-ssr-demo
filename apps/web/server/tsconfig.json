@@ -15,7 +15,7 @@
 		],
 		"types": [
 			"@rsbuild/core/types",
-			"../../env.d.ts"
+			"../../../env.d.ts"
 		]
 	},
 	"include": [

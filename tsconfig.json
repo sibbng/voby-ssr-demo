@@ -3,22 +3,30 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-			"*": ["packages/*/src"]
+			"*": [
+				"packages/*/src"
+			]
 		},
 		"composite": true,
 		"module": "Preserve",
 		"moduleResolution": "Node",
 		"esModuleInterop": true,
 		"strict": true,
-		"lib": ["ESNext", "DOM"]
+		"lib": [
+			"ESNext",
+			"DOM"
+		]
 	},
-	"include": ["**/rsbuild.config.ts", "**/rslib.config.ts"],
+	"include": [
+		"**/rsbuild.config.ts",
+		"**/rslib.config.ts"
+	],
 	"references": [
 		{
-			"path": "./apps/client"
+			"path": "./apps/web/client"
 		},
 		{
-			"path": "./apps/server"
+			"path": "./apps/web/server"
 		},
 		{
 			"path": "./packages/voby-unplugin"
