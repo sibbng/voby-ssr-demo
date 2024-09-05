@@ -5,9 +5,13 @@ import { favicon, serveStatic } from "noren/middlewares";
 import Server from "noren/node";
 
 const serverRender = async (req: any) => {
-  const remotesPath = path.join(process.cwd(), `./dist/server/index.mjs`);
-  const importedApp = await import(process.platform === 'win32' ? `file://${remotesPath.replace(/\\/g, '/')}` : remotesPath);
-  return await importedApp.render({ req });
+	const remotesPath = path.join(process.cwd(), `./dist/server/index.mjs`);
+	const importedApp = await import(
+		process.platform === "win32"
+			? `file://${remotesPath.replace(/\\/g, "/")}`
+			: remotesPath
+	);
+	return await importedApp.render({ req });
 };
 
 const INDEX_PATH = path.join(process.cwd(), "dist", "index.html");
@@ -15,32 +19,31 @@ const INDEX_CONTENT = fs.readFileSync(INDEX_PATH, "utf8");
 
 const port = Number(process.env.PORT) || 3000;
 
-  const app = new Server();
+const app = new Server();
 
-  // app.use(favicon(path.join(process.cwd(), "dist", "favicon.ico")));
-  app.use(serveStatic(path.join(process.cwd(), "dist")));
+// app.use(favicon(path.join(process.cwd(), "dist", "favicon.ico")));
+app.use(serveStatic(path.join(process.cwd(), "dist")));
 
-  app.get("*", async (req, res) => {
-    try {
-      const markup = await serverRender(req);
-      const html = INDEX_CONTENT.replace(
-        '<div id="app"></div>',
-        `<div id="app">${markup}</div>`
-      );
-      res.html(html);
-    } catch (err) {
-      console.error("SSR render error, downgrade to CSR...\n", err);
-      res.status(500).send("Internal Server Error");
-    }
-  });
+app.get("*", async (req, res) => {
+	try {
+		const markup = await serverRender(req);
+		const html = INDEX_CONTENT.replace(
+			'<div id="app"></div>',
+			`<div id="app">${markup}</div>`,
+		);
+		res.html(html);
+	} catch (err) {
+		console.error("SSR render error, downgrade to CSR...\n", err);
+		res.status(500).send("Internal Server Error");
+	}
+});
 
-  app.listen(port, () => {
-    console.log(`Server started at http://localhost:${port}`);
-  });
+app.listen(port, () => {
+	console.log(`Server started at http://localhost:${port}`);
+});
 
 // Remove this line as it's not needed with the new structure
 
 process.on("exit", async () => {
-  app.server.close();
+	app.server.close();
 });
-

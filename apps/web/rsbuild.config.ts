@@ -6,10 +6,10 @@ import path from "node:path";
 const parsedEnv = loadEnv({
 	mode: process.env.NODE_ENV,
 	cwd: path.join(process.cwd(), "..", ".."),
-}).parsed
-const serverEnv: Record<string, string> = {}
+}).parsed;
+const serverEnv: Record<string, string> = {};
 for (const key in parsedEnv) {
-	serverEnv[`process.env.${key}`] = `"${parsedEnv[key]}"`
+	serverEnv[`process.env.${key}`] = `"${parsedEnv[key]}"`;
 }
 
 export default defineConfig({
@@ -24,10 +24,10 @@ export default defineConfig({
 			name: "public",
 			copyOnBuild: true,
 		},
-		printUrls: true
+		printUrls: true,
 	},
-  environments: {
-    web: {
+	environments: {
+		web: {
 			source: {
 				entry: {
 					index: "./client/src/index.tsx",
@@ -47,7 +47,7 @@ export default defineConfig({
 				inject: "body",
 				scriptLoading: "blocking",
 			},
-		
+
 			tools: {
 				swc: {
 					jsc: {
@@ -65,25 +65,25 @@ export default defineConfig({
 					ctx.env === "development" && ctx.prependPlugins(voby.hmr.rspack());
 				},
 			},
-    },
-    ssr: {
-      output: {
-        target: "node",
-        distPath: {
-          root: "dist/server",
-        },
+		},
+		ssr: {
+			output: {
+				target: "node",
+				distPath: {
+					root: "dist/server",
+				},
 				filename: {
 					js: "[name].mjs",
 				},
-      },
-      source: {
+			},
+			source: {
 				define: {
 					...serverEnv,
 				},
-        entry: {
-          index: "./server/src/index.tsx",
-        },
-      },
+				entry: {
+					index: "./server/src/index.tsx",
+				},
+			},
 			tools: {
 				swc: {
 					jsc: {
@@ -101,10 +101,15 @@ export default defineConfig({
 					config.output ??= {};
 					config.output.module = true;
 					config.output.chunkFormat = "module";
-					config.output.library = { type: process.env.NODE_ENV === "production" ? "modern-module" : "module" };
+					config.output.library = {
+						type:
+							process.env.NODE_ENV === "production"
+								? "modern-module"
+								: "module",
+					};
 					ctx.prependPlugins(voby.ssr.rspack());
 				},
 			},
-    },
-  },
+		},
+	},
 });

@@ -9,18 +9,8 @@
 		"moduleResolution": "Bundler",
 		"esModuleInterop": true,
 		"strict": true,
-		"lib": [
-			"ESNext",
-			"DOM"
-		],
-		"types": [
-			"@rsbuild/core/types",
-			"../../../env.d.ts"
-		]
+		"lib": ["ESNext", "DOM"],
+		"types": ["@rsbuild/core/types", "../../../env.d.ts"]
 	},
-	"include": [
-		"src/**/*.ts",
-		"src/**/*.tsx",
-		"../client/**/*.tsx"
-	]
+	"include": ["src/**/*.ts", "src/**/*.tsx", "../client/**/*.tsx"]
 }

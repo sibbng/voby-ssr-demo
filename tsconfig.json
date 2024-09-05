@@ -3,24 +3,16 @@
 	"compilerOptions": {
 		"baseUrl": ".",
 		"paths": {
-			"*": [
-				"packages/*/src"
-			]
+			"*": ["packages/*/src"]
 		},
 		"composite": true,
 		"module": "Preserve",
 		"moduleResolution": "Node",
 		"esModuleInterop": true,
 		"strict": true,
-		"lib": [
-			"ESNext",
-			"DOM"
-		]
+		"lib": ["ESNext", "DOM"]
 	},
-	"include": [
-		"**/rsbuild.config.ts",
-		"**/rslib.config.ts"
-	],
+	"include": ["**/rsbuild.config.ts", "**/rslib.config.ts"],
 	"references": [
 		{
 			"path": "./apps/web/client"
