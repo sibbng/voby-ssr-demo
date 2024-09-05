@@ -1,23 +1,31 @@
 {
-	"$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
-	"organizeImports": {
-		"enabled": true
-	},
-	"linter": {
-		"enabled": true,
-		"rules": {
-			"recommended": true,
-			"style": { "noNonNullAssertion": "off", "noUselessElse": "off" },
-			"correctness": {
-				"noUnusedImports": "warn"
-			},
-			"complexity": {
-				"noBannedTypes": "off"
-			},
-			"suspicious": {
-				"noExplicitAny": "off",
-				"noPrototypeBuiltins": "off"
-			}
-		}
-	}
+  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "files": {
+    "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.json"]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentWidth": 2,
+    "indentStyle": "space"
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "style": { "noNonNullAssertion": "off", "noUselessElse": "off" },
+      "correctness": {
+        "noUnusedImports": "warn"
+      },
+      "complexity": {
+        "noBannedTypes": "off"
+      },
+      "suspicious": {
+        "noExplicitAny": "off",
+        "noPrototypeBuiltins": "off"
+      }
+    }
+  }
 }

@@ -1,27 +1,27 @@
 {
-	"files": [],
-	"compilerOptions": {
-		"baseUrl": ".",
-		"paths": {
-			"*": ["packages/*/src"]
-		},
-		"composite": true,
-		"module": "Preserve",
-		"moduleResolution": "Node",
-		"esModuleInterop": true,
-		"strict": true,
-		"lib": ["ESNext", "DOM"]
-	},
-	"include": ["**/rsbuild.config.ts", "**/rslib.config.ts"],
-	"references": [
-		{
-			"path": "./apps/web/client"
-		},
-		{
-			"path": "./apps/web/server"
-		},
-		{
-			"path": "./packages/voby-unplugin"
-		}
-	]
+  "files": [],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": ["packages/*/src"]
+    },
+    "composite": true,
+    "module": "Preserve",
+    "moduleResolution": "Node",
+    "esModuleInterop": true,
+    "strict": true,
+    "lib": ["ESNext", "DOM"]
+  },
+  "include": ["**/rsbuild.config.ts", "**/rslib.config.ts"],
+  "references": [
+    {
+      "path": "./apps/web/client"
+    },
+    {
+      "path": "./apps/web/server"
+    },
+    {
+      "path": "./packages/voby-unplugin"
+    }
+  ]
 }

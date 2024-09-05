@@ -1,16 +1,16 @@
 {
-	"compilerOptions": {
-		"target": "ESNext",
-		"rootDir": "../..",
-		"composite": true,
-		"jsx": "react-jsx",
-		"jsxImportSource": "voby",
-		"module": "Preserve",
-		"moduleResolution": "Bundler",
-		"esModuleInterop": true,
-		"strict": true,
-		"lib": ["ESNext", "DOM"],
-		"types": ["@rsbuild/core/types", "../../../env.d.ts"]
-	},
-	"include": ["src/**/*.ts", "src/**/*.tsx", "../client/**/*.tsx"]
+  "compilerOptions": {
+    "target": "ESNext",
+    "rootDir": "../..",
+    "composite": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "voby",
+    "module": "Preserve",
+    "moduleResolution": "Bundler",
+    "esModuleInterop": true,
+    "strict": true,
+    "lib": ["ESNext", "DOM"],
+    "types": ["@rsbuild/core/types", "../../../env.d.ts"]
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "../client/**/*.tsx"]
 }

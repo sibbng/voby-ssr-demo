@@ -1,16 +1,16 @@
 {
-	"compilerOptions": {
-		"composite": true,
-		"jsx": "react-jsx",
-		"jsxImportSource": "voby",
-		"module": "Preserve",
-		"moduleResolution": "Bundler",
-		"esModuleInterop": true,
-		"skipLibCheck": true,
-		"skipDefaultLibCheck": true,
-		"strict": true,
-		"lib": ["ESNext"],
-		"types": []
-	},
-	"include": ["src", "rslib.config.ts"]
+  "compilerOptions": {
+    "composite": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "voby",
+    "module": "Preserve",
+    "moduleResolution": "Bundler",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "strict": true,
+    "lib": ["ESNext"],
+    "types": []
+  },
+  "include": ["src", "rslib.config.ts"]
 }

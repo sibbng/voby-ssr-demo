@@ -1,7 +1,7 @@
 /* MAIN */
 
 const Page404 = (): JSX.Element => {
-	return <h1>404 - Not found</h1>;
+  return <h1>404 - Not found</h1>;
 };
 
 /* EXPORT */

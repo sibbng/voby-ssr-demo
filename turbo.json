@@ -1,28 +1,28 @@
 {
-	"$schema": "https://turbo.build/schema.json",
-	"globalDependencies": [
-		".env.production",
-		".env.development",
-		"tsconfig.json"
-	],
-	"tasks": {
-		"web#dev": {
-			"persistent": true
-		},
-		"web#build": {
-			"dependsOn": ["voby-unplugin#build"],
-			"inputs": ["client/**", "server/**", "rsbuild.config.ts"],
-			"outputs": ["dist/**"]
-		},
-		"web#start": {
-			"persistent": true
-		},
-		"voby-unplugin#dev": {
-			"persistent": true
-		},
-		"voby-unplugin#build": {
-			"inputs": ["src/**", "rsbuild.config.ts"],
-			"outputs": ["dist/**"]
-		}
-	}
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [
+    ".env.production",
+    ".env.development",
+    "tsconfig.json"
+  ],
+  "tasks": {
+    "web#dev": {
+      "persistent": true
+    },
+    "web#build": {
+      "dependsOn": ["voby-unplugin#build"],
+      "inputs": ["client/**", "server/**", "rsbuild.config.ts"],
+      "outputs": ["dist/**"]
+    },
+    "web#start": {
+      "persistent": true
+    },
+    "voby-unplugin#dev": {
+      "persistent": true
+    },
+    "voby-unplugin#build": {
+      "inputs": ["src/**", "rsbuild.config.ts"],
+      "outputs": ["dist/**"]
+    }
+  }
 }
