@@ -12,7 +12,7 @@
     "web#build": {
       "dependsOn": ["voby-unplugin#build"],
       "inputs": ["client/**", "server/**", "rsbuild.config.ts"],
-      "outputs": ["dist/**"]
+      "outputs": [".output/**"]
     },
     "web#start": {
       "persistent": true
