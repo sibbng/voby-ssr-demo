@@ -27,7 +27,11 @@ const port = Number(process.env.PORT) || 3000;
 const app = new Server();
 
 // app.use(favicon(path.join(process.cwd(), "dist", "favicon.ico")));
-app.use(serveStatic(path.join(process.cwd(), ".output", "client")));
+app.use(
+  serveStatic(path.join(process.cwd(), ".output", "client"), {
+    dotfiles: true,
+  }),
+);
 
 app.get("*", async (req, res) => {
   try {
