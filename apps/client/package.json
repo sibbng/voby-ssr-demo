@@ -1,9 +1,0 @@
-{
-	"name": "client",
-	"private": true,
-	"type": "module",
-	"scripts": {
-		"dev": "rsbuild dev --env-dir \"../..\"",
-		"build": "rsbuild build --env-dir \"../..\""
-	}
-}

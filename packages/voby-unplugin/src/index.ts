@@ -166,12 +166,13 @@ export const ssr = createUnplugin(() => {
 		"Node",
 	].join(",");
 	const virtualModuleId = "\0voby-linkedom";
-	const targetPackagesRE = /(voby|when-exit)@/;
+	const targetPackagesRE = /node_modules\/(voby|when-exit)\/dist/;
 
 	return {
 		name: "voby-ssr-helpers",
 		enforce: "pre",
 		transformInclude: (id) => {
+			id = id.replaceAll("\\", "/");
 			return targetPackagesRE.test(id);
 		},
 		resolveId: (id) => {
@@ -184,10 +185,13 @@ export const ssr = createUnplugin(() => {
 				return /* js */ `
           import {parseHTML} from 'linkedom';
           const {${linkedomImports}} = parseHTML('<!doctype html><html><head></head><body></body></html>');
+					import {nextTick} from 'node:process';
+					globalThis.queueMicrotask = nextTick;
           export {${linkedomImports}};`;
 			}
 		},
 		transform(code, id) {
+			id = id.replaceAll("\\", "/");
 			if (targetPackagesRE.test(id)) {
 				const s = new MagicString(code);
 				s.prepend(`import {${linkedomImports}} from '${virtualModuleId}';\n`);

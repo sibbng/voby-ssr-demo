@@ -1,0 +1,10 @@
+{
+	"name": "web",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "rsbuild build --env-dir \"../..\"",
+		"dev": "node --env-file \"../../.env.development\" --experimental-vm-modules --experimental-strip-types ./server/src/entry.dev.ts",
+		"start": "node --env-file \"../../.env.production\" --experimental-vm-modules --experimental-strip-types ./server/src/entry.server.ts"
+	}
+}

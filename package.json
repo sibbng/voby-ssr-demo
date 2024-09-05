@@ -3,7 +3,7 @@
 	"name": "voby-ssr-roldown",
 	"type": "module",
 	"scripts": {
-		"dev": "turbo server#dev client#dev server#watch",
+		"dev": "turbo web#dev",
 		"build": "turbo build",
 		"start": "turbo start"
 	},
@@ -12,12 +12,14 @@
 		"voby-simple-router": "^1.4.3"
 	},
 	"devDependencies": {
+		"@biomejs/biome": "^1.8.3",
 		"@dotenvx/dotenvx": "^1.11.5",
 		"@microsoft/api-extractor": "^7.47.7",
 		"@rsbuild/core": "1.0.1-beta.16",
 		"@rslib/core": "^0.0.3",
 		"@rspack/core": "1.0.0-rc.0",
 		"cross-env": "^7.0.3",
+		"express": "^4.19.2",
 		"linkedom": "^0.18.4",
 		"magic-string": "^0.30.11",
 		"noren": "^0.4.7",

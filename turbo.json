@@ -6,27 +6,15 @@
 		"tsconfig.json"
 	],
 	"tasks": {
-		"client#dev": {
-			"cache": false
-		},
-		"client#build": {
-			"dependsOn": ["voby-unplugin#build"],
-			"inputs": ["src/**", "public/**", "rsbuild.config.ts"],
-			"outputs": ["dist/client/**"]
-		},
-		"server#dev": {
-			"cache": false
-		},
-		"server#build": {
-			"dependsOn": ["voby-unplugin#build"],
-			"inputs": ["src/**", "../client/src/**", "../client/public/**", "rsbuild.config.ts"],
-			"outputs": ["dist/server/**"]
-		},
-		"server#watch": {
-			"passThroughEnv": ["PORT"],
+		"web#dev": {
 			"persistent": true
 		},
-		"server#start": {
+		"web#build": {
+			"dependsOn": ["voby-unplugin#build"],
+			"inputs": ["client/**", "server/**", "rsbuild.config.ts"],
+			"outputs": ["dist/**"]
+		},
+		"web#start": {
 			"persistent": true
 		},
 		"voby-unplugin#dev": {
