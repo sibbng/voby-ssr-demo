@@ -4,7 +4,8 @@
     "enabled": true
   },
   "files": {
-    "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.json"]
+    "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx", "**/*.json"],
+    "ignore": ["**/node_modules/**", "**/dist/**"]
   },
   "formatter": {
     "enabled": true,

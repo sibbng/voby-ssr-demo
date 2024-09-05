@@ -51,6 +51,14 @@ app.listen(rsbuildServer.port, async () => {
 
 rsbuildServer.connectWebSocket({ server: app.server });
 
+console.log(
+  "server",
+  process.env.NODE_ENV,
+  process.env.PORT,
+  process.env.HELLO,
+  process.env.PUBLIC_HELLO,
+);
+
 process.on("exit", async () => {
   await rsbuildServer.close();
   app.server.close();

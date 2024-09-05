@@ -2,16 +2,6 @@ import { defineConfig, loadEnv } from "@rsbuild/core";
 import * as voby from "voby-unplugin";
 import path from "node:path";
 
-// We do this because Rsbuild can't load .env files properly if target file is esm module
-const parsedEnv = loadEnv({
-  mode: process.env.NODE_ENV,
-  cwd: path.join(process.cwd(), "..", ".."),
-}).parsed;
-const serverEnv: Record<string, string> = {};
-for (const key in parsedEnv) {
-  serverEnv[`process.env.${key}`] = `"${parsedEnv[key]}"`;
-}
-
 export default defineConfig({
   dev: {
     writeToDisk: true,
@@ -75,7 +65,10 @@ export default defineConfig({
       },
       source: {
         define: {
-          ...serverEnv,
+          ...loadEnv({
+            mode: process.env.NODE_ENV,
+            cwd: path.join(process.cwd(), "..", ".."),
+          }).publicVars,
         },
         entry: {
           index: "./server/src/index.tsx",
