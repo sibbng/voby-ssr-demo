@@ -24,7 +24,7 @@ export default defineConfig({
         inlineStyles: true,
         inlineScripts: true,
         distPath: {
-          root: "dist",
+          root: "./.output/client",
         },
         cleanDistPath: true,
         target: "web",
@@ -57,7 +57,7 @@ export default defineConfig({
       output: {
         target: "node",
         distPath: {
-          root: "dist/server",
+          root: "./.output/server",
         },
         filename: {
           js: "[name].mjs",

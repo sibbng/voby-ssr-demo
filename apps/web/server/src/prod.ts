@@ -5,7 +5,12 @@ import { serveStatic } from "noren/middlewares";
 import Server from "noren/node";
 
 const serverRender = async (req: any) => {
-  const remotesPath = path.join(process.cwd(), "./dist/server/index.mjs");
+  const remotesPath = path.join(
+    process.cwd(),
+    ".output",
+    "server",
+    "index.mjs",
+  );
   const importedApp = await import(
     process.platform === "win32"
       ? `file://${remotesPath.replace(/\\/g, "/")}`
@@ -14,7 +19,7 @@ const serverRender = async (req: any) => {
   return await importedApp.render({ req });
 };
 
-const INDEX_PATH = path.join(process.cwd(), "dist", "index.html");
+const INDEX_PATH = path.join(process.cwd(), ".output", "client", "index.html");
 const INDEX_CONTENT = fs.readFileSync(INDEX_PATH, "utf8");
 
 const port = Number(process.env.PORT) || 3000;
@@ -22,7 +27,7 @@ const port = Number(process.env.PORT) || 3000;
 const app = new Server();
 
 // app.use(favicon(path.join(process.cwd(), "dist", "favicon.ico")));
-app.use(serveStatic(path.join(process.cwd(), "dist")));
+app.use(serveStatic(path.join(process.cwd(), ".output", "client")));
 
 app.get("*", async (req, res) => {
   try {

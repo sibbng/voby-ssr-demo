@@ -32,7 +32,11 @@ const rsbuildServer = await rsbuild.createDevServer();
 
 const serverRenderMiddleware = serverRender(rsbuildServer);
 
-app.use(serveStatic(path.join(process.cwd(), "dist")));
+app.use(
+  serveStatic(path.join(process.cwd(), ".output", "client"), {
+    dotfiles: true,
+  }),
+);
 
 app.get("*", async (req, res) => {
   try {
