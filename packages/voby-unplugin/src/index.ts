@@ -185,8 +185,6 @@ export const ssr = createUnplugin(() => {
         return /* js */ `
           import {parseHTML} from 'linkedom';
           const {${linkedomImports}} = parseHTML('<!doctype html><html><head></head><body></body></html>');
-					import {nextTick} from 'node:process';
-					globalThis.queueMicrotask = nextTick;
           export {${linkedomImports}};`;
       }
     },

@@ -2,6 +2,11 @@ import { defineConfig, loadEnv } from "@rsbuild/core";
 import * as voby from "voby-unplugin";
 import path from "node:path";
 
+const { publicVars } = loadEnv({
+  mode: process.env.NODE_ENV,
+  cwd: path.join(process.cwd(), "..", ".."),
+});
+
 export default defineConfig({
   dev: {
     writeToDisk: true,
@@ -16,6 +21,9 @@ export default defineConfig({
   environments: {
     web: {
       source: {
+        define: {
+          ...publicVars,
+        },
         entry: {
           index: "./client/src/index.tsx",
         },
@@ -24,7 +32,7 @@ export default defineConfig({
         inlineStyles: true,
         inlineScripts: true,
         distPath: {
-          root: "./.output/client",
+          root: ".output/client",
         },
         cleanDistPath: true,
         target: "web",
@@ -57,7 +65,7 @@ export default defineConfig({
       output: {
         target: "node",
         distPath: {
-          root: "./.output/server",
+          root: ".output/server",
         },
         filename: {
           js: "[name].mjs",
@@ -65,10 +73,7 @@ export default defineConfig({
       },
       source: {
         define: {
-          ...loadEnv({
-            mode: process.env.NODE_ENV,
-            cwd: path.join(process.cwd(), "..", ".."),
-          }).publicVars,
+          ...publicVars,
         },
         entry: {
           index: "./server/src/index.tsx",
