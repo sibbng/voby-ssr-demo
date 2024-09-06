@@ -3,7 +3,6 @@ import * as voby from "voby-unplugin";
 import path from "node:path";
 
 const { publicVars } = loadEnv({
-  mode: process.env.NODE_ENV,
   cwd: path.join(process.cwd(), "..", ".."),
 });
 
