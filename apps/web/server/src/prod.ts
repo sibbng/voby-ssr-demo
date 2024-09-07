@@ -16,6 +16,7 @@ app.use(
   serveStatic(path.join(process.cwd(), ".output", "client"), {
     dotfiles: true,
   }),
+  serveStatic(path.join(process.cwd(), "client", "public")),
 );
 
 app.get("*", async (req, res) => {

@@ -1,4 +1,4 @@
-import { defineConfig, loadEnv } from "@rsbuild/core";
+import { defineConfig, loadEnv, RsbuildPlugin, RsbuildPlugins } from "@rsbuild/core";
 import * as voby from "voby-unplugin";
 import path from "node:path";
 
@@ -12,8 +12,8 @@ export default defineConfig({
   },
   server: {
     publicDir: {
-      name: "public",
-      copyOnBuild: true,
+      name: "./client/public",
+      copyOnBuild: false,
     },
     printUrls: true,
   },
@@ -28,20 +28,19 @@ export default defineConfig({
         },
       },
       output: {
-        inlineStyles: true,
-        inlineScripts: true,
+        // inlineStyles: true,
+        // inlineScripts: true,
         distPath: {
-          root: ".output/client",
+          root: "./.output/client",
         },
         cleanDistPath: true,
         target: "web",
       },
       html: {
-        template: "./client/public/index.html",
+        template: "./client/src/index.html",
         inject: "body",
         scriptLoading: "blocking",
       },
-
       tools: {
         swc: {
           jsc: {
@@ -65,7 +64,7 @@ export default defineConfig({
         minify: false,
         target: "node",
         distPath: {
-          root: ".output/server",
+          root: "./.output/server",
         },
         filename: {
           js: "[name].mjs",
