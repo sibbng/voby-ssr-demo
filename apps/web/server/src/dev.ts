@@ -6,14 +6,11 @@ import { createRsbuild, loadConfig } from "@rsbuild/core";
 import type { Req, Res } from "noren/node";
 
 const serverRender = (serverAPI: any) => async (req: Req, res: Res) => {
-  const indexModule = await serverAPI.environments.ssr.loadBundle("index");
+  const indexModule = await serverAPI.environments.ssr.loadBundle("entry");
   const markup = await indexModule.render({ req });
-  const template = await serverAPI.environments.web.getTransformedHtml("index");
+  const template = await serverAPI.environments.client.getTransformedHtml("index");
 
-  const html = template.replace(
-    '<div id="app"></div>',
-    `<div id="app">${markup}</div>`,
-  );
+  const html = template.replace('<div id="app"></div>', `<div id="app">${markup}</div>`);
 
   res.html(html);
 };

@@ -3,21 +3,7 @@ import path from "node:path";
 import process from "node:process";
 import { serveStatic } from "noren/middlewares";
 import Server from "noren/node";
-
-const serverRender = async (req: any) => {
-  const remotesPath = path.join(
-    process.cwd(),
-    ".output",
-    "server",
-    "index.mjs",
-  );
-  const importedApp = await import(
-    process.platform === "win32"
-      ? `file://${remotesPath.replace(/\\/g, "/")}`
-      : remotesPath
-  );
-  return await importedApp.render({ req });
-};
+import { render } from "./entry";
 
 const INDEX_PATH = path.join(process.cwd(), ".output", "client", "index.html");
 const INDEX_CONTENT = fs.readFileSync(INDEX_PATH, "utf8");
@@ -34,11 +20,8 @@ app.use(
 
 app.get("*", async (req, res) => {
   try {
-    const markup = await serverRender(req);
-    const html = INDEX_CONTENT.replace(
-      '<div id="app"></div>',
-      `<div id="app">${markup}</div>`,
-    );
+    const markup = await render({ req });
+    const html = INDEX_CONTENT.replace('<div id="app"></div>', `<div id="app">${markup}</div>`);
     res.html(html);
   } catch (err) {
     console.error("SSR render error, downgrade to CSR...\n", err);

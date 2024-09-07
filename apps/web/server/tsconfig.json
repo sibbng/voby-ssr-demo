@@ -10,7 +10,7 @@
     "esModuleInterop": true,
     "strict": true,
     "lib": ["ESNext", "DOM"],
-    "types": ["@rsbuild/core/types", "../../../env.d.ts"]
+    "types": ["@rspack/core/module", "../../../env.d.ts"]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "../client/**/*.tsx"]
 }

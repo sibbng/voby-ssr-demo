@@ -18,7 +18,7 @@ export default defineConfig({
     printUrls: true,
   },
   environments: {
-    web: {
+    client: {
       source: {
         define: {
           ...publicVars,
@@ -62,6 +62,7 @@ export default defineConfig({
     },
     ssr: {
       output: {
+        minify: false,
         target: "node",
         distPath: {
           root: ".output/server",
@@ -75,7 +76,8 @@ export default defineConfig({
           ...publicVars,
         },
         entry: {
-          index: "./server/src/index.tsx",
+          entry: "./server/src/entry.tsx",
+          prod: "./server/src/prod.ts",
         },
       },
       tools: {
@@ -95,12 +97,7 @@ export default defineConfig({
           config.output ??= {};
           config.output.module = true;
           config.output.chunkFormat = "module";
-          config.output.library = {
-            type:
-              process.env.NODE_ENV === "production"
-                ? "modern-module"
-                : "module",
-          };
+          config.output.library = { type: "module" };
           ctx.prependPlugins(voby.ssr.rspack());
         },
       },
