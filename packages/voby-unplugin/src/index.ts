@@ -12,17 +12,14 @@ export const hmr = createUnplugin<Options | undefined>((options = {}, meta) => {
   if (!/vite|rspack/.test(meta.framework)) {
     console.warn(`Voby plugin not tested with ${meta.framework}`);
   }
-  const hmrEnabled =
-    options.hmr?.enabled ?? process.env.NODE_ENV === "development";
+  const hmrEnabled = options.hmr?.enabled ?? process.env.NODE_ENV === "development";
   const hmrFilter = options.hmr?.filter ?? /\.(jsx|tsx)$/;
-  const hmrDefaultExportRe =
-    /^export\s+default\s+(_?[A-Z][a-zA-Z0-9$_-]*)\s*(;|$)/m;
+  const hmrDefaultExportRe = /^export\s+default\s+(_?[A-Z][a-zA-Z0-9$_-]*)\s*(;|$)/m;
   const hmrNamedExportRe = /^export\s+{([^}]+)}/gm;
   const hmrNamedExportSingleRe = /^\s*(_?[A-Z][a-zA-Z0-9$_-]*)\s*$/;
   const hmrNamedExportAliasedRe =
     /^\s*([a-zA-Z$_][a-zA-Z0-9$_]*)\s+as\s+(_?[A-Z][a-zA-Z0-9$_-]*|default)\s*$/;
-  const hmrNamedInlineExportRe =
-    /^export\s+((?:function|const)\s+(_?[A-Z][a-zA-Z0-9$_-]*))/gm;
+  const hmrNamedInlineExportRe = /^export\s+((?:function|const)\s+(_?[A-Z][a-zA-Z0-9$_-]*))/gm;
   const hmrNamedDefaultExportRe =
     /^export\s+(?:default\s+)?((?:function|const)\s+(_?[A-Z][a-zA-Z0-9$_-]*))/gm;
 
@@ -44,8 +41,7 @@ export const hmr = createUnplugin<Options | undefined>((options = {}, meta) => {
     `,
   };
 
-  const template =
-    templates[meta.framework.endsWith("pack") ? "rspack" : "vite"];
+  const template = templates[meta.framework.endsWith("pack") ? "rspack" : "vite"];
 
   const generateExports = ({
     name,
@@ -58,16 +54,10 @@ export const hmr = createUnplugin<Options | undefined>((options = {}, meta) => {
   }) => {
     let code = template.replaceAll("__name__", name);
     if (type === "named") {
-      code = code.replace(
-        "__export__",
-        () => `export {$$hmr_${name} as ${name}};`,
-      );
+      code = code.replace("__export__", () => `export {$$hmr_${name} as ${name}};`);
     } else if (alias) {
       if (!code.includes(`${name} as default`)) {
-        code = code.replace(
-          "__export__",
-          () => `export {$$hmr_${name} as ${alias}};`,
-        );
+        code = code.replace("__export__", () => `export {$$hmr_${name} as ${alias}};`);
       }
     } else {
       code = code.replace("__export__", () => `export default $$hmr_${name};`);
@@ -158,13 +148,7 @@ export const hmr = createUnplugin<Options | undefined>((options = {}, meta) => {
 });
 
 export const ssr = createUnplugin(() => {
-  const linkedomImports = [
-    "window",
-    "document",
-    "HTMLElement",
-    "Element",
-    "Node",
-  ].join(",");
+  const linkedomImports = ["window", "document", "HTMLElement", "Element", "Node"].join(",");
   const virtualModuleId = "\0voby-linkedom";
   const targetPackagesRE = /node_modules\/(voby|when-exit)\/dist/;
 

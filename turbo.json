@@ -1,10 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": [
-    ".env.production",
-    ".env.development",
-    "tsconfig.json"
-  ],
+  "globalDependencies": [".env.production", ".env.development", "tsconfig.json"],
   "tasks": {
     "web#dev": {
       "persistent": true
