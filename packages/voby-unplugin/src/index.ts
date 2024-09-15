@@ -8,6 +8,7 @@ interface Options {
   };
 }
 
+// biome-ignore lint/style/useDefaultParameterLast: <explanation>
 export const hmr = createUnplugin<Options | undefined>((options = {}, meta) => {
   if (!/vite|rspack/.test(meta.framework)) {
     console.warn(`Voby plugin not tested with ${meta.framework}`);
@@ -25,7 +26,7 @@ export const hmr = createUnplugin<Options | undefined>((options = {}, meta) => {
 
   const templates = {
     rspack: /* js */ `
-      let onAccept___name__ = module.hot.data?.__name__.acceptFn || ((_onAccept) => { 
+      let onAccept___name__ = module.hot.data?.__name__.acceptFn || ((_onAccept) => {
         onAccept___name__ = _onAccept
       });
       const $$hmr___name__ = module.hot.data?.__name__.component || $$hmr(onAccept___name__, __name__)
