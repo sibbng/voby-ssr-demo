@@ -1,4 +1,4 @@
-import { defineConfig, loadEnv, RsbuildPlugin, RsbuildPlugins } from "@rsbuild/core";
+import { defineConfig, loadEnv } from "@rsbuild/core";
 import * as voby from "voby-unplugin";
 import path from "node:path";
 

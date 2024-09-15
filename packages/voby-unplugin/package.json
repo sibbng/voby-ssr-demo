@@ -24,6 +24,11 @@
     "dev": "rslib build --watch"
   },
   "devDependencies": {
-    "@types/node": "^22.5.1"
+    "@microsoft/api-extractor": "^7.47.7",
+    "@rslib/core": "^0.0.5",
+    "@types/node": "^22.5.1",
+    "linkedom": "^0.18.4",
+    "magic-string": "^0.30.11",
+    "unplugin": "^1.13.1"
   }
 }

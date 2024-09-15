@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "rootDir": "../..",
     "composite": true,
     "jsx": "react-jsx",
     "jsxImportSource": "voby",
@@ -10,7 +9,7 @@
     "esModuleInterop": true,
     "strict": true,
     "lib": ["ESNext", "DOM"],
-    "types": ["@rspack/core/module", "../../../env.d.ts"]
+    "types": ["@rsbuild/core/types", "../env.d.ts"]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "../client/**/*.tsx"]
+  "include": ["src", "../client/src"]
 }

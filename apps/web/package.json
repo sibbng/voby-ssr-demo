@@ -3,8 +3,15 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "rsbuild build --env-dir \"../..\"",
-    "dev": "node  --watch-path=rsbuild.config.ts --env-file \"../../.env.development\" --experimental-vm-modules --experimental-strip-types ./server/src/dev.ts",
-    "start": "node --env-file \"../../.env.production\" ./.output/server/prod.mjs"
+    "build": "rsbuild build",
+    "dev": "node  --watch-path=rsbuild.config.ts --env-file .env.development --experimental-vm-modules --experimental-strip-types server/src/dev.ts",
+    "start": "node --env-file .env.production .output/server/prod.mjs"
+  },
+  "dependencies": {
+    "@rsbuild/core": "1.0.1-rc.4",
+    "noren": "^0.4.7",
+    "voby": "*",
+    "voby-simple-router": "^1.4.3",
+    "voby-unplugin": "workspace:^"
   }
 }
