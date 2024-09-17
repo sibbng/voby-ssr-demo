@@ -53,8 +53,6 @@ export default defineConfig({
           },
         },
         rspack(config, ctx) {
-          config.experiments ??= {};
-          config.experiments.outputModule = true;
           ctx.env === "development" && ctx.prependPlugins(voby.hmr.rspack());
         },
       },
