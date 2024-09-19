@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "rsbuild build",
-    "dev": "node --env-file .env.development --experimental-vm-modules --experimental-strip-types server/src/dev.ts",
+    "dev": "node --env-file .env.development --experimental-vm-modules --experimental-transform-types server/src/dev.ts",
     "start": "node --env-file .env.production .output/server/prod.mjs"
   },
   "dependencies": {

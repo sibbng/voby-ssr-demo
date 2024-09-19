@@ -61,6 +61,9 @@ export default defineConfig({
       output: {
         minify: false,
         target: "node",
+        sourceMap: {
+          js: "eval-source-map",
+        },
         distPath: {
           root: "./.output/server",
         },
