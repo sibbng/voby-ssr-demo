@@ -68,7 +68,7 @@ export default defineConfig({
           root: "./.output/server",
         },
         filename: {
-          js: "[name].mjs",
+          js: "[name].cjs",
         },
       },
       source: {
@@ -92,12 +92,12 @@ export default defineConfig({
           },
         },
         rspack(config, ctx) {
-          config.experiments ??= {};
-          config.experiments.outputModule = true;
-          config.output ??= {};
-          config.output.module = true;
-          config.output.chunkFormat = "module";
-          config.output.library = { type: "module" };
+          // config.experiments ??= {};
+          // config.experiments.outputModule = true;
+          // config.output ??= {};
+          // config.output.module = true;
+          // config.output.chunkFormat = "module";
+          // config.output.library = { type: "module" };
           ctx.prependPlugins(voby.ssr.rspack());
         },
       },
