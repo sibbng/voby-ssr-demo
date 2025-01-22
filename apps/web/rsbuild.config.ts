@@ -28,7 +28,7 @@ export default defineConfig({
         },
       },
       output: {
-        // inlineStyles: true,
+        inlineStyles: true,
         // inlineScripts: true,
         distPath: {
           root: "./.output/client",
