@@ -38,8 +38,8 @@ export default defineConfig({
       },
       html: {
         template: "./client/src/index.html",
-        inject: "body",
-        scriptLoading: "blocking",
+        inject: "head",
+        scriptLoading: "defer",
       },
       tools: {
         swc: {
